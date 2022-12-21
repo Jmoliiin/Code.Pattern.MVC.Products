@@ -1,0 +1,33 @@
+﻿@using Code.Pattern.Products.Models.Admin.CreateModels;
+
+@model CreateDiscountModel
+@{
+    ViewData["Title"] = "CreateDiscount";
+}
+
+
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <partial name="_adminMenuPartial" />
+        <div class="col-8">
+            <form asp-action="CreateDiscount">
+            <div class="row col-6">
+                <div class="col-12 mb-3">
+                    <label asp-for="DiscountName" class="form-label"></label>
+                    <input asp-for="DiscountName" class="form-control">
+                    <span asp-validation-for="DiscountName" class="form-text text-danger"></span>
+                </div>
+                <div class="col-12 mb-3">
+                    <label asp-for="DiscountAmount" class="form-label"></label>
+                    <input asp-for="DiscountAmount" class="form-control">
+                    <span asp-validation-for="DiscountAmount" class="form-text text-danger"></span>
+                </div>     
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">@ViewData["Title"]</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+

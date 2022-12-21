@@ -1,0 +1,76 @@
+﻿@model Code.Pattern.Products.Models.ViewModels.ProductListViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <div class="container">
+        @*<h2>@ViewData["pageHeader"]</h2>*@
+        @if(Model != null)
+        {
+              <div class="d-flex mt-5">
+                  @*Categorys*@
+                    <div class="me-6 mt-5 col-2 border-end">
+                        <p><a asp-action="Products" asp-route-categoryName=@null>All products</a></p>
+                        @if (Model.CategoryList != null)
+                        {
+                            foreach (var category in Model.CategoryList)
+                            {
+                                <div>
+                                    <p><a asp-action="Products" asp-route-categoryName="@category.CategoryName">@category.CategoryName</a></p>
+                                </div>
+                            }
+                        }
+                    </div>
+                    @*Products*@
+                    <div class="col-10">
+                                <div class="home-section-3-products row row-cols">
+                            @if (Model.ProductList != null)
+                            {
+                       
+                                @foreach (var product in Model.ProductList)
+                                {
+                                    <div class="col">
+                                        <div class="card text-center" style="width: 250px;">
+                                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2022/12/04/23/12/siblings-7635490_960_720.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h6 class="card-text"> <a asp-action="Products" asp-route-categoryName="@product.Category">@product.Category</a></h6>
+                                                <h5 class="card-title"><a asp-action="Details" asp-route-id="@product.Id">@product.ProductName</a></h5>
+                                                <img class="rating-stars"  src="~/img/Group 2.png">
+                                                @if (product.Quantity.HasValue && product.Quantity.Value > 0)
+                                                {
+                                                    if (product.Quantity.Value >= 10)
+                                                    {
+                                                        <p><i>Product finns i lager</i></p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p><i>Det finns bara @product.Quantity.Value i lager</i></p>
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    <p><i> Slut i lager</i></p>
+                                                }
+                                            </div>
+                                            <div class="card-footer">
+                                                <p class="card-text"> <b>@product.ProductPrice</b></p>
+                                                @if (product.DiscountAmount > 0)
+                                                {
+                                                    <p class="card-text">REA: <b>@product.PriceWithDiscount</b></p>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                        
+                            }
+                        </div>
+                     </div>
+                
+            
+               </div>
+        } 
+    </div>

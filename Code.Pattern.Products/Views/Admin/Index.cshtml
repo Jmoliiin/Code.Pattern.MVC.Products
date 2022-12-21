@@ -1,0 +1,40 @@
+﻿@using Code.Pattern.Products.Models.BaseModels;
+
+@model IEnumerable<BaseProductModel>
+@{
+    ViewData["Title"] = "Index";
+
+  
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <partial name="_adminMenuPartial" />
+        <div class="col-8">
+            <h3>All Products</h3>
+            @if (Model != null)
+            {
+                @foreach (var product in Model)
+                {
+                        <div class="d-flex">
+                        <p class="pe-2">@product.Id</p>
+                        <p class="pe-2">@product.ArticleNumber</p>
+                        <p class="pe-2">@product.ProductName</p>
+                        @*<p class="pe-2">@product.ProductDescription.</p>*@
+                        <p class="pe-2">@product.ProductPrice</p>
+                        <p class="pe-2">@product.Quantity</p>
+                        <p class="pe-2">@product.Category</p>
+
+                        @if (product.DiscountAmount > 0)
+                        {
+                            <p class="pe-2">Discount Amount: @product.DiscountAmount</p>
+                            <p class="pe-2">Sale price:@product.PriceWithDiscount</p>
+                        }
+                    </div>
+                }
+            } 
+        </div>
+    </div>
+
+</div>
+

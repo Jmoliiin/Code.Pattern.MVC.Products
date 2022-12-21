@@ -1,0 +1,21 @@
+﻿@using static Code.Pattern.Products.Models.IProducModel;
+@model ProductModel
+
+
+<div class="container">
+    <h3>
+        Details site
+    </h3>
+    <p>@Model.ProductName</p>
+    <p>@Model.ProductDescription</p>
+    <p>@Model.ProductPrice</p>
+    @if (Model.DiscountAmount > 0)
+    {
+        <p>Nytt pris: @Model.PriceWithDiscount</p>
+    }
+    
+    <p>@Model.ArticleNumber</p>
+    <p>@Model.Category</p>
+    <p>@Model.Quantity</p>
+    <p></p>
+</div>

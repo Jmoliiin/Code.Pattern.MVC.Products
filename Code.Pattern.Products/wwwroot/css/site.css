@@ -1,0 +1,161 @@
+
+
+/*.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+*/
+
+/* Colors*/
+
+/*COLORS*/
+:root {
+    --clr-blue: #151c43;
+    --clr-blue30: #151c43e5;
+    --clr-turq: #20D3C2;
+    --crl-white: #ffffff;
+    --clr-black: #23262A;
+    --crl-grey: #E6E6E6;
+    --crl-coral: #FF7373;
+}
+
+.border-red {
+    border: solid 1px red;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #222529;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(43, 43, 43)
+}
+
+    a:hover {
+        color: var(--clr-secundary);
+    }
+
+.header2 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.position-r {
+    position: relative;
+}
+
+.position-a {
+    position: absolute;
+}
+
+.bg-background {
+    background-color: var(--crl-grey);
+    z-index: -1;
+}
+
+.navbar {
+    height: 80px;
+}
+
+/* PAGE 1 */
+.header-image-left {
+    right: 100px;
+}
+
+.header-image-right {
+    left: 100px;
+}
+
+.header-image-text h1 {
+    font-size: 65px;
+}
+
+.header-image-text p {
+    font-size: 20px;
+    width: 500px;
+}
+
+/* Section 2 */
+.home-section-2 {
+    margin: 4rem;
+}
+
+.home-section-2-text-right,
+.home-section-2-text-left {
+    padding-left: 25px;
+    padding-right: 350px;
+    top: 120px;
+    width: 100%;
+    height: 250px;
+}
+
+/* Section 3 */
+.rating-stars {
+    height: 15px;
+    width: 100px;
+}
+
+.home-section-3-products {
+    margin: 4rem 7rem 4rem 7rem;
+}
+
+.home-section-3-products .card-footer, .card {
+    background-color: transparent;
+    border: none;
+}
+
+.home-section-3-products .col {
+    margin-top: 1rem;
+}
+
+.home-section-3-products .card-img-top {
+    height: 210px;
+    width: inherit;
+}
+
+
+
+/* buttons */
+.white-button,
+.pink-button, .black-button {
+    border-radius: 0px;
+    border: none;
+    width: 154px;
+    height: 40px;
+    padding: 2px;
+    font-weight: bold;
+    font-size: 18px;
+    font-size: 16px;
+}
+
+.white-button {
+    color: var(--clr-turq);
+    background-color: var(--crl-white)
+}
+
+    .white-button:hover,
+    .pink-button:hover,
+    .black-button:hover {
+        color: var(--crl-grey)
+    }
+
+.black-button {
+    color: var(--crl-white);
+    background-color: var(--clr-black);
+}
+
+.pink-button {
+    color: var(--crl-white);
+    background-color: var(--crl-coral);
+}

@@ -1,0 +1,107 @@
+﻿@model ICollection<Code.Pattern.Products.Models.BaseModels.BaseProductModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+
+    int takeNumber = ViewBag.TakeLatestItems;
+}
+
+<div class="bg-background" id="PageHeader">
+    <div class="container">
+        <div class="d-flex align-items-center">
+            <div class="header-image-left position-r">
+                <img src="./img/femail.png">
+            </div>
+            <div class="header-image-text text-center">
+                <h1>
+                    SALE UP
+                    <br>
+                    To 50% Off
+                </h1>
+                <p class="mt-3">Online shopping free home delivery over $100</p>
+                <button class="pink-button mt-3">Shop now</button>
+            </div>
+            <div class="header-image-right position-r">
+                <img src="./img/male.png">
+            </div>
+        </div>
+    </div>
+</div>
+<section class="home-section-2">
+    <div class="container">
+        <div class="d-flex align-items-center">
+
+            <div class="home-section-2-img position-r">
+                <img src="./img/women2.png">
+                <div class="home-section-2-text-left position-a d-flex align-items-start flex-column">
+                    <h2 class="header2">
+                        Winter Clearance
+                        Up to 70% Off!
+                    </h2>
+                    <p class="mb-auto">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem apriam eaque ipsa quae ab illo inventore.</p>
+                    <button class="black-button mt-3">Shop now</button>
+                </div>
+            </div>
+
+            <div class="home-section-2-img position-r">
+                <img src="./img/man-2.png">
+                <div class="home-section-2-text-right position-a  d-flex align-items-start flex-column">
+                    <h2 class="header2 mt-auto">
+                        New<br>
+                        Arrivals
+                    </h2>
+                    <button class="black-button mt-3">Shop now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="home-section-3">
+    <div class="container">
+        <div class="home-section-3-products row row-cols-4 justify-content-between">
+            @if (Model == null)
+            {
+                <p>No products exist yet</p>
+            }
+            else
+            {
+                @foreach (var product in Model.Take(takeNumber))
+                {
+                 <div class="col">
+                    <div class="card text-center" style="width: 250px;">
+                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2022/12/04/23/12/siblings-7635490_960_720.jpg" alt="Card image cap">
+                        <div class="card-body">
+                                <h6 class="card-text"> <a asp-action="Products" asp-route-categoryName="@product.Category">@product.Category</a></h6>
+                                <h5 class="card-title"><a asp-action="Details" asp-route-id="@product.Id">@product.ProductName</a></h5>
+                           <img class="rating-stars" src="./img/Group 2.png">
+                                @if (product.Quantity.HasValue && product.Quantity.Value > 0)
+                                {
+                                    if (product.Quantity.Value >= 10)
+                                    {
+                                        <p><i>Product finns i lager</i></p>
+                                    }
+                                    else
+                                    {
+                                        <p><i>Det finns bara @product.Quantity.Value i lager</i></p>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p><i> Slut i lager</i></p>
+                                }
+                            </div>
+                        <div class="card-footer">
+                                <p class="card-text"> <b>@product.ProductPrice</b></p>
+                        </div>
+                            @if (product.DiscountAmount > 0)
+                            {
+                                <p class="">REA: @product.PriceWithDiscount</p>
+                            }
+                        </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+</section>
